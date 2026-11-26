@@ -438,3 +438,51 @@
   @media (max-width:700px){
     .team-grid{grid-template-columns:1fr;}
   }
+
+  /* ---------- individual bio page ---------- */
+  .bio-header{
+    display:flex;
+    gap:28px;
+    align-items:center;
+    margin-top:22px;
+    flex-wrap:wrap;
+  }
+  .bio-photo{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    overflow:hidden;
+    flex:none;
+    border:3px solid var(--surface);
+    box-shadow:var(--shadow);
+  }
+  .bio-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .bio-meta{color:var(--muted);font-size:0.95rem;margin-top:8px;}
+  .bio-block{
+    padding-block:28px;
+    border-bottom:1px solid var(--line);
+  }
+  .bio-block:last-child{border-bottom:none;}
+  .bio-block .section-label{display:block;margin-bottom:12px;}
+  .bio-block p{margin:0;color:var(--muted);line-height:1.75;max-width:720px;white-space:pre-line;}
+  .back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:'Space Mono', monospace;
+    font-size:0.8rem;
+    color:var(--muted);
+    text-decoration:none;
+    margin-bottom:18px;
+  }
+  .back-link:hover{color:var(--red);}
+  .card-link{
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    font-weight:700;
+    color:var(--red);
+    text-decoration:none;
+    margin-top:4px;
+    display:inline-block;
+  }
+  .card-link:hover{text-decoration:underline;}
