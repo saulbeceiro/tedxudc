@@ -3,384 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Página de proximamente de TEDxUDC, el primer evento TEDx en la Universidade da Coruña, previsto para marzo de 2027.">
+<meta name="description" content="TEDxUDC — Próximamente el 1 de abril de 2027 (provisional) en la Universidade da Coruña. Charlas breves y en directo, organizadas de forma independiente bajo licencia de TED.">
 <title>TEDxUDC</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap">
-<style>
-  :root{
-    --paper:#FAF9F6;
-    --surface:#FFFFFF;
-    --ink:#151311;
-    --muted:#6B655C;
-    --line:#E7E2D8;
-    --red:#EB0028;
-    --red-dark:#B4001E;
-    --red-tint:#FCE7E9;
-    --shadow:0 24px 60px rgba(30,20,10,0.10);
-    --ring:rgba(235,0,40,0.16);
-  }
-
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --paper:#0B0A0A;
-      --surface:#161413;
-      --ink:#F3F0EA;
-      --muted:#A79E90;
-      --line:#2B2622;
-      --red:#FF3654;
-      --red-dark:#FF5A73;
-      --red-tint:rgba(255,54,84,0.16);
-      --shadow:0 24px 60px rgba(0,0,0,0.55);
-      --ring:rgba(255,54,84,0.22);
-    }
-  }
-  :root[data-theme="dark"]{
-    --paper:#0B0A0A;
-    --surface:#161413;
-    --ink:#F3F0EA;
-    --muted:#A79E90;
-    --line:#2B2622;
-    --red:#FF3654;
-    --red-dark:#FF5A73;
-    --red-tint:rgba(255,54,84,0.16);
-    --shadow:0 24px 60px rgba(0,0,0,0.55);
-    --ring:rgba(255,54,84,0.22);
-  }
-
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Archivo', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  .mono{
-    font-family:'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    letter-spacing:0.02em;
-    font-variant-numeric:tabular-nums;
-  }
-  a{color:inherit;}
-  img{max-width:100%;display:block;}
-  h1,h2,h3{text-wrap:balance;}
-
-  .wrap{
-    width:min(1080px, 100%);
-    margin:0 auto;
-    padding-inline:20px;
-  }
-
-  /* ---------- header ---------- */
-  header{
-    position:sticky;
-    top:env(safe-area-inset-top,0px);
-    z-index:20;
-    background:color-mix(in srgb, var(--paper) 86%, transparent);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-    padding-block:14px;
-  }
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
-  .brand img{height:26px;width:auto;}
-  .status-pill{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    border:1px solid var(--line);
-    background:var(--surface);
-    padding:7px 12px;
-    font-size:0.78rem;
-    font-weight:700;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-  }
-  .dot{
-    width:7px;height:7px;border-radius:50%;
-    background:var(--red);
-    box-shadow:0 0 0 0 var(--ring);
-    animation:pulse 2.4s ease-out infinite;
-  }
-  @keyframes pulse{
-    0%{box-shadow:0 0 0 0 var(--ring);}
-    70%{box-shadow:0 0 0 8px transparent;}
-    100%{box-shadow:0 0 0 0 transparent;}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .dot{animation:none;}
-  }
-
-  /* ---------- hero ---------- */
-  .hero{
-    position:relative;
-    overflow:hidden;
-    padding-block:64px 56px;
-    border-bottom:1px solid var(--line);
-  }
-  .hero-glow{
-    position:absolute;
-    top:-220px; right:-160px;
-    width:640px; height:640px;
-    background:radial-gradient(circle, var(--ring), transparent 62%);
-    pointer-events:none;
-  }
-  .eyebrow-row{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:28px;
-    color:var(--muted);
-    font-size:0.85rem;
-  }
-  .eyebrow-row .x{
-    color:var(--red);
-    font-weight:800;
-  }
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1fr auto;
-    gap:40px;
-    align-items:end;
-    position:relative;
-  }
-  .date-block{
-    display:flex;
-    align-items:stretch;
-    gap:22px;
-  }
-  .date-rule{
-    width:5px;
-    background:var(--red);
-    flex:none;
-    opacity:0;
-    transform-origin:top;
-    animation:growRule 0.7s 0.15s ease-out forwards;
-  }
-  @keyframes growRule{ from{opacity:1; transform:scaleY(0);} to{opacity:1; transform:scaleY(1);} }
-  @media (prefers-reduced-motion: reduce){ .date-rule{animation:none; opacity:1;} }
-
-  .date-text{opacity:0; animation:riseIn 0.7s 0.25s ease-out forwards;}
-  @keyframes riseIn{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
-  @media (prefers-reduced-motion: reduce){ .date-text{animation:none; opacity:1;} }
-
-  .kicker{
-    font-family:'Space Mono', monospace;
-    font-size:0.85rem;
-    font-weight:700;
-    color:var(--red);
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    margin-bottom:6px;
-  }
-  h1{
-    font-family:'Archivo Black', 'Archivo', sans-serif;
-    font-weight:400;
-    font-size:clamp(3.4rem, 12vw, 8.4rem);
-    line-height:0.86;
-    letter-spacing:-0.02em;
-    margin:0;
-    text-transform:uppercase;
-  }
-  .hero-sub{
-    max-width:560px;
-    font-size:clamp(1.05rem, 1.6vw, 1.22rem);
-    color:var(--muted);
-    margin-top:26px;
-  }
-  .hero-actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-    margin-top:30px;
-  }
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:13px 20px;
-    font-weight:700;
-    font-size:0.95rem;
-    border:1.5px solid var(--ink);
-    text-decoration:none;
-    transition:transform 0.15s ease, background 0.15s ease, color 0.15s ease;
-  }
-  .btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);}
-  .btn.primary:hover{background:var(--red);border-color:var(--red);transform:translateY(-2px);}
-  .btn.ghost{background:transparent;color:var(--ink);}
-  .btn.ghost:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px);}
-
-  .license-note{
-    margin-top:22px;
-    font-size:0.82rem;
-    color:var(--muted);
-  }
-
-  .logo-side{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-end;
-    gap:14px;
-  }
-  .logo-side img{height:64px;width:auto;}
-  .place-tag{
-    font-family:'Space Mono', monospace;
-    font-size:0.78rem;
-    color:var(--muted);
-    text-align:right;
-    border-top:1px solid var(--line);
-    padding-top:10px;
-  }
-
-  @media (max-width:760px){
-    .hero-grid{grid-template-columns:1fr;}
-    .logo-side{align-items:flex-start;}
-    .place-tag{text-align:left;}
-  }
-
-  /* ---------- sections ---------- */
-  section{padding-block:60px;}
-  .section-head{
-    display:grid;
-    grid-template-columns:1fr 1.6fr;
-    gap:32px;
-    margin-bottom:36px;
-    align-items:baseline;
-    border-bottom:1px solid var(--line);
-    padding-bottom:22px;
-  }
-  .section-label{
-    font-family:'Space Mono', monospace;
-    font-size:0.8rem;
-    color:var(--red);
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-  }
-  h2{
-    font-size:clamp(1.5rem, 3vw, 2.1rem);
-    margin:0;
-    letter-spacing:-0.01em;
-  }
-  .lede{
-    color:var(--muted);
-    font-size:1.02rem;
-    max-width:640px;
-  }
-  @media (max-width:700px){
-    .section-head{grid-template-columns:1fr;}
-  }
-
-  .about-grid{
-    display:grid;
-    grid-template-columns:1.3fr 1fr;
-    gap:48px;
-  }
-  .about-copy p{margin:0 0 16px;color:var(--muted);}
-  .about-copy strong{color:var(--ink);}
-  .fact-list{
-    border-top:1px solid var(--line);
-  }
-  .fact-list div{
-    display:flex;
-    justify-content:space-between;
-    gap:16px;
-    padding:14px 0;
-    border-bottom:1px solid var(--line);
-    font-size:0.92rem;
-  }
-  .fact-list dt{color:var(--muted);}
-  .fact-list dd{margin:0;font-weight:700;text-align:right;font-family:'Space Mono',monospace;font-size:0.85rem;}
-  @media (max-width:760px){ .about-grid{grid-template-columns:1fr;} }
-
-  .card-row{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-  }
-  .card{
-    background:var(--surface);
-    padding:28px 24px;
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-  }
-  .card .mark{
-    width:12px;height:12px;
-    background:var(--red);
-  }
-  .card h3{margin:0;font-size:1.08rem;}
-  .card p{margin:0;color:var(--muted);font-size:0.92rem;}
-  @media (max-width:760px){ .card-row{grid-template-columns:1fr;} }
-
-  /* ---------- contact block ---------- */
-  .contact{
-    background:var(--red);
-    color:#fff;
-    padding:44px;
-    display:grid;
-    grid-template-columns:1.3fr auto;
-    gap:32px;
-    align-items:center;
-  }
-  .contact h2{color:#fff;}
-  .contact p{color:rgba(255,255,255,0.86);margin-top:10px;max-width:480px;}
-  .contact img{height:34px;width:auto;margin-bottom:18px;}
-  .contact .btn{border-color:#fff;color:#fff;background:transparent;}
-  .contact .btn:hover{background:#fff;color:var(--red);border-color:#fff;transform:translateY(-2px);}
-  @media (max-width:700px){ .contact{grid-template-columns:1fr; padding:30px 24px;} }
-
-  /* ---------- socials ---------- */
-  .social-row{
-    display:flex;
-    gap:10px;
-    margin-top:22px;
-  }
-  .social-row a{
-    width:40px;height:40px;
-    border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;
-    text-decoration:none;
-    transition:border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
-    color:var(--muted);
-  }
-  .social-row a:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px);}
-  .social-row svg{width:18px;height:18px;}
-  .social-note{font-size:0.82rem;color:var(--muted);margin-top:10px;}
-
-  /* ---------- footer ---------- */
-  footer{
-    border-top:1px solid var(--line);
-    padding-block:28px calc(28px + env(safe-area-inset-bottom,0px));
-    color:var(--muted);
-    font-size:0.82rem;
-  }
-  .foot-grid{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    flex-wrap:wrap;
-    gap:16px;
-  }
-  .foot-grid .mono{font-size:0.78rem;}
-  .disclaimer{max-width:520px;}
-</style>
-</head>
-<body>
-
+<link rel="stylesheet" href="styles.css">
 
 <header>
   <nav class="wrap">
     <a class="brand" href="#top">
       <img src="data:image/png;base64,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" alt="TEDxUDC" />
     </a>
-    <span class="status-pill"><span class="dot"></span>Próximamente</span>
+    <div class="nav-group">
+      <div class="site-nav">
+        <a href="#top" class="active">Inicio</a>
+        <a href="equipo.html">Equipo</a>
+      </div>
+      <span class="status-pill"><span class="dot"></span>Próximamente</span>
+    </div>
   </nav>
 </header>
 
@@ -389,15 +28,15 @@
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="wrap">
       <div class="eyebrow-row">
-        <span>TEDx<span class="x">x</span> · Universidade da Coruña</span>
+        <span>TED<span class="x">x</span> · Universidade da Coruña</span>
       </div>
       <div class="hero-grid">
         <div class="date-block">
           <div class="date-rule" aria-hidden="true"></div>
           <div class="date-text">
             <p class="kicker">Guarda la fecha</p>
-            <h1>Marzo<br>2027</h1>
-            <p class="hero-sub">TEDxUDC llega a A Coruña: un primer evento organizado por y para la comunidad universitaria, con charlas breves y en directo sobre ideas que merecen difundirse.</p>
+            <h1>Abril<br>2027</h1>
+            <p class="hero-sub">TEDxUDC llega a A Coruña: un primer evento organizado por y para la comunidad universitaria, con charlas breves y en directo sobre ideas que merecen difundirse. Fecha prevista: 1 de abril de 2027 (pendiente de confirmación).</p>
             <div class="hero-actions">
               <a class="btn primary" href="mailto:contacto@tedxudc.com">Escríbenos</a>
               <a class="btn ghost" href="#sobre">Qué es TEDx</a>
@@ -428,7 +67,7 @@
         <dl class="fact-list">
           <div><dt>Formato</dt><dd>Charlas breves en directo</dd></div>
           <div><dt>Lugar</dt><dd>Universidade da Coruña</dd></div>
-          <div><dt>Fecha</dt><dd>Marzo 2027</dd></div>
+          <div><dt>Fecha</dt><dd>1 de abril de 2027 (provisional)</dd></div>
           <div><dt>Licencia</dt><dd>TEDx / TED</dd></div>
         </dl>
       </div>
@@ -455,7 +94,7 @@
         <div class="card">
           <span class="mark" aria-hidden="true"></span>
           <h3>Ideas dignas de difundirse</h3>
-          <p>El espíritu TEDx: ideas con potencial para cambiar una perspectiva, un proyecto o una comunidad.</p>
+          <p>El espíritu TEDxUDC: ideas con potencial para cambiar una perspectiva, un proyecto o una comunidad.</p>
         </div>
       </div>
     </div>
@@ -472,17 +111,17 @@
         <a class="btn" href="mailto:contacto@tedxudc.com">contacto@tedxudc.com</a>
       </div>
       <div class="social-row" aria-label="Redes sociales de TEDxUDC">
-        <a href="https://tedxudc.es" aria-label="Instagram de TEDxUDC (próximamente)" title="Instagram — próximamente">
+        <a href="https://www.instagram.com/tedxudc/" target="_blank" rel="noopener" aria-label="Instagram de TEDxUDC" title="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
         </a>
-        <a href="https://tedxudc.es" aria-label="X de TEDxUDC (próximamente)" title="X — próximamente">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4l16 16M20 4L4 20"/></svg>
+        <a href="https://www.facebook.com/tedxudc" target="_blank" rel="noopener" aria-label="Facebook de TEDxUDC" title="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M13.5 9.5h1.8V7.2h-1.8c-1.7 0-3 1.3-3 3v1.6H9v2.4h1.5V17h2.4v-2.8h1.8l.3-2.4h-2.1v-1.3c0-.6.4-1 1-1z"/></svg>
         </a>
-        <a href="https://tedxudc.es" aria-label="LinkedIn de TEDxUDC (próximamente)" title="LinkedIn — próximamente">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="8" y1="10" x2="8" y2="16"/><circle cx="8" cy="7" r="0.6" fill="currentColor"/><path d="M12 16v-4.2c0-1.4 1-2 2-2s2 .8 2 2V16"/></svg>
+        <a href="https://x.com/tedxudc" target="_blank" rel="noopener" aria-label="X de TEDxUDC" title="X">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M7.5 7.5l9 9M16.5 7.5l-9 9"/></svg>
         </a>
       </div>
-      <p class="social-note">Redes sociales en camino — de momento estos iconos enlazan a tedxudc.com.</p>
+      <p class="social-note">Síguenos en Instagram, Facebook y X para las novedades de TEDxUDC.</p>
     </div>
   </section>
 </main>
